@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :categories
+
+  resources :comments
+
+  resources :articles
+
   devise_for :users
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
