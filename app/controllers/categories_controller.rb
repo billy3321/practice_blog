@@ -5,12 +5,13 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.order(created_at: :asc).page params[:page]
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @articles = @category.articles.order(created_at: :desc).page params[:page]
   end
 
   # GET /categories/new

@@ -25,6 +25,7 @@
     <p><%= comment.content %></p>
   </div>
 <% end %>
+<%= paginate @comments %>
 <%= render 'comments/form' %>
 
 <%= link_to 'Back', articles_path %>

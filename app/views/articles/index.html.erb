@@ -13,7 +13,7 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.user_id %></td>
+        <td><%= article.user.name %></td>
         <td><%= article.title %></td>
         <td><%= article.content %></td>
         <td><%= link_to 'Show', article %></td>
@@ -21,6 +21,7 @@
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <%= paginate @articles %>
   </tbody>
 </table>
 

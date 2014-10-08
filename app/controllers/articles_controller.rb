@@ -5,13 +5,13 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.order(created_at: :desc)
+    @articles = Article.order(created_at: :desc).page params[:page]
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @comments = @article.comments.all
+    @comments = @article.comments.order(created_at: :asc).page params[:page]
     @comment = @article.comments.build
   end
 

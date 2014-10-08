@@ -5,5 +5,16 @@
   <%= @category.name %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Edit', edit_category_path(@category) %>
+
+<h3>Articles</h3>
+<% @articles.each do |article| %>
+  <div>
+    <strong><%= article.title %></strong>
+    <br />
+    <p><%= article.content %></p>
+  </div>
+  <%= paginate @articles %>
+<% end %>
+
 <%= link_to 'Back', categories_path %>
