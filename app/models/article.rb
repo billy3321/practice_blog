@@ -3,4 +3,5 @@ class Article < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   max_paginates_per 10
+  validates_presence_of :title, :content, :user_id
 end

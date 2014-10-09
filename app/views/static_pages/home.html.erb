@@ -1,5 +1,8 @@
 <h1>Welcome to use Practice Blog</h1>
 <p>Find me in app/views/static_pages/home.html.erb</p>
-
-<%= link_to "Sign up now!", '/users/sign_up' %>
-<%= link_to "Sign in now!", '/users/sign_in' %>
+<% if user_signed_in? %>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<% else %>
+    <%= link_to "Sign up now!", new_user_registration_path %>
+    <%= link_to "Sign in now!", new_user_session_path %>
+<% end %>

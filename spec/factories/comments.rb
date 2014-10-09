@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :commet do
+  factory :comment do
     sequence(:name)  { |n| "Commenter #{n}" }
-    sequence(:email) { |n| "comment_#{n} content"}
+    sequence(:content) { |n| "comment_#{n} content"}
     article
   end
 end

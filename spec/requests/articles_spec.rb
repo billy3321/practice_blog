@@ -4,30 +4,110 @@ describe "Articles" do
   let(:user) { FactoryGirl.create(:user) }
   let(:category) {FactoryGirl.create(:category)}
   let(:article) { FactoryGirl.create(:article, user: user, category: category)}
-  let(:commet) {FactoryGirl.create(:commet, article: article)}
+  let(:comment) {FactoryGirl.create(:comment, article: article)}
+  let(:new_article) do
+    {
+      :title => 'new_article_title',
+      :content => "new_article_content",
+      :user_id => user.id
+    }
+  end
 
   describe "before login" do
-    it "show article" do
-      visit "/articles/#{article.id}"
-      it { should have_content(article.content)}
-      it { should have_content(commet.content)}
+    describe "#index" do
+      it "success" do
+        get "/articles"
+        expect(response).to be_success
+      end
     end
-    it "cannot post new article" do
-      visit edit_article_path(user)
-      it { should have_title('Sign in') }
+
+    describe "#new" do
+      it "success" do
+        get "/articles/new"
+        expect(response).to be_redirect
+      end
+    end
+
+    describe "#show" do
+      it "success" do
+        get "/articles/#{article.id}"
+        expect(response).to be_success
+      end
+    end
+
+    describe "#edit" do
+      it "success" do
+        get "/articles/#{article.id}/edit"
+        expect(response).to be_redirect
+      end
     end
   end
 
   describe "after login" do
-    before do
-      visit signin_path
-      fill_in "Email",    with: user.email
-      fill_in "Password", with: user.password
-      click_button "Sign in"
+    before { sign_in(user) }
+    after { sign_out }
+
+    describe "#index" do
+      it "success" do
+        get "/articles"
+        expect(response).to be_success
+      end
+    end
+
+    describe "#new" do
+      it "success" do
+        get "/articles/new"
+        expect(response).to be_success
+      end
+    end
+
+    describe "#show" do
+      it "success" do
+        get "/articles/#{article.id}"
+        expect(response).to be_success
+      end
+    end
+
+    describe "#edit" do
+      it "success" do
+        get "/articles/#{article.id}/edit"
+        expect(response).to be_success
+      end
+    end
+
+    describe '#create' do
+      it 'success' do
+        expect {
+          post '/articles', :article => new_article
+        }.to change { Article.count }.by(1)
+        expect(response).to be_redirect
+      end
+    end
+
+    describe '#update' do
+      it 'success' do
+        article
+        update_data = { :content => 'new_content' }
+        put "/articles/#{article.id}", :article => update_data
+        expect(response).to be_redirect
+        article.reload
+        expect(article.content).to match(update_data[:content])
+      end
+    end
+
+    describe '#destroy' do
+      it 'success' do
+        article
+        expect {
+          delete "/articles/#{article.id}"
+        }.to change { Article.count }.by(-1)
+        expect(response).to be_redirect
+      end
     end
 
     it "should have sign out link" do
-      it { should have_content('Sign out') }
+      get root_path
+      expect(response.body).should match('Sign out')
     end
   end
 end

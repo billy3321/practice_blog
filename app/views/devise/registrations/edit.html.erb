@@ -1,0 +1,53 @@
+<div class="col-md-offset-3"><h2>修改 <%= resource_name.to_s.humanize %>資料</h2></div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :class => "form-horizontal center" }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :email, "電子信箱", class: "control-label col-md-3" %>
+    <div class="col-md-6">
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :name, "匿稱", class: "control-label col-md-3" %>
+    <div class="col-md-6">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>正在確認: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :password, "密碼", class: "control-label col-md-3" %><i>(如果不想改變，請保持空白)</i>
+    <div class="col-md-6">
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, "密碼", class: "control-label col-md-3" %>
+    <div class="col-md-6">
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_password, "當前密碼", class: "control-label col-md-3" %><i>(請輸入現在的密碼)</i>
+    <div class="col-md-6">
+      <%= f.password_field :current_password, autocomplete: "off" %>
+    </div>
+  </div>
+
+  <div><%= f.submit "更新", class: "btn btn-default btn-primary col-md-offset-3" %></div>
+<% end %>
+<div class="col-md-offset-3">
+<h3>刪除帳號</h3>
+
+<p>不高興嗎？ <%= button_to "刪除帳號", registration_path(resource_name), class: "btn", data: { confirm: "你確定嗎？" }, method: :delete %></p>
+
+<%= link_to "Back", :back, class: "btn" %>
+</div>

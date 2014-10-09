@@ -1,9 +1,10 @@
-<h1>Listing categories</h1>
+<div class="col-md-6 col-md-offset-2">
+<h1>所有分類</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>名稱</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,7 +21,8 @@
     <%= paginate @categories %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Category', new_category_path, class: "btn" %>
+</div>
+

@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   resources :articles
 
   devise_for :users
+  #devise_for :users, :controllers => { :registration => "registration" }
+
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
+  #match '/signup', to: 'users#new'
+  #match '/signin', to: 'users#sign_in'
+  #match '/signout', to: 'users#sign_out'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

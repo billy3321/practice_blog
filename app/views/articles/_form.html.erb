@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :user_id , :value => current_user.id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="field">
     <%= f.label :category_id %><br>
     <%= f.select :category_id, Category.all.collect { |c| [ c.name, c.id] }, include_blank: false, prompt: "請選類別" %></td>

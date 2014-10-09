@@ -1,3 +1,5 @@
+<div class="col-md-6 col-md-offset-3">
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -17,4 +19,6 @@
   <%= paginate @articles %>
 <% end %>
 
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Back', categories_path, class: "btn" %>
+
+</div>

@@ -15,6 +15,7 @@ gem 'devise'
 gem 'bcrypt'
 gem 'kaminari'
 gem 'factory_girl_rails'
+gem 'kaminari-bootstrap'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -22,6 +23,7 @@ group :development, :test do
   gem 'minitest'
   gem "capybara"
   gem 'rspec-rails', '2.13.1'
+  gem 'venus', '~> 0.8.6'
 end
 
 # Use jquery as the JavaScript library
