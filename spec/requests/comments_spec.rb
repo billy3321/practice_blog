@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "Comments" do
 
@@ -8,7 +8,7 @@ describe "Comments" do
   let(:comment) {FactoryGirl.create(:comment, article: article)}
   let(:new_comment) do
     {
-      :name => 'new_comment_name',
+      :name => "new_comment_name",
       :content => "new_comment_content",
       :article_id => article.id
     }
@@ -28,19 +28,19 @@ describe "Comments" do
     end
   end
 
-  describe '#create' do
-    it 'success' do
+  describe "#create" do
+    it "success" do
       expect {
-        post '/comments', :comment => new_comment
+        post "/comments", :comment => new_comment
       }.to change { Comment.count }.by(1)
       expect(response).to be_redirect
     end
   end
 
-  describe '#update' do
-    it 'success' do
+  describe "#update" do
+    it "success" do
       comment
-      update_data = { :content => 'new_content' }
+      update_data = { :content => "new_content" }
       put "/comments/#{comment.id}", :comment => update_data
       expect(response).to be_redirect
       comment.reload
@@ -48,8 +48,8 @@ describe "Comments" do
     end
   end
 
-  describe '#destroy' do
-    it 'success' do
+  describe "#destroy" do
+    it "success" do
       comment
       expect {
         delete "/comments/#{comment.id}"

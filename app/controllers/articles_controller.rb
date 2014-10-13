@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.order(created_at: :desc).page params[:page]
+    @articles = Article.all.page params[:page]
   end
 
   # GET /articles/1

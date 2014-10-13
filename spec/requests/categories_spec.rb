@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 
 
@@ -7,7 +7,7 @@ describe "Categories" do
   let(:category) {FactoryGirl.create(:category)}
   let(:new_category) do
     {
-      :name => 'new_category'
+      :name => "new_category"
     }
   end
 
@@ -53,19 +53,19 @@ describe "Categories" do
       end
     end
 
-    describe '#create' do
-      it 'success' do
+    describe "#create" do
+      it "success" do
         expect {
-          post '/categories', :category => new_category
+          post "/categories", :category => new_category
         }.to change { Category.count }.by(1)
         expect(response).to be_redirect
       end
     end
 
-    describe '#update' do
-      it 'success' do
+    describe "#update" do
+      it "success" do
         category
-        update_data = { :name => 'new_name' }
+        update_data = { :name => "new_name" }
         put "/categories/#{category.id}", :category => update_data
         expect(response).to be_redirect
         category.reload
@@ -73,8 +73,8 @@ describe "Categories" do
       end
     end
 
-    describe '#destroy' do
-      it 'success' do
+    describe "#destroy" do
+      it "success" do
         category
         expect {
           delete "/categories/#{category.id}"

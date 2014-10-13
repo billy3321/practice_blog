@@ -1,4 +1,6 @@
 <div class="col-md-offset-2">
+<% provide(:title, "所有文章") %>
+
 <h1>所有文章</h1>
 
 <table class="table">
@@ -17,9 +19,9 @@
         <td><%= article.user.name %></td>
         <td><%= article.title %></td>
         <td><%= article.content %></td>
-        <td><%= link_to '閱讀', article, class: "btn" %></td>
-        <td><%= link_to '修改', edit_article_path(article), class: "btn" %></td>
-        <td><%= link_to '刪除', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %></td>
+        <td><%= link_to "閱讀", article, class: "btn" %></td>
+        <td><%= link_to "修改", edit_article_path(article), class: "btn" %></td>
+        <td><%= link_to "刪除", article, method: :delete, data: { confirm: "Are you sure?" }, class: "btn" %></td>
       </tr>
     <% end %>
     <%= paginate @articles %>
@@ -28,5 +30,5 @@
 
 <br>
 
-<%= link_to '新文章', new_article_path, class: "btn"%>
+<%= link_to "新文章", new_article_path, class: "btn"%>
 </div>

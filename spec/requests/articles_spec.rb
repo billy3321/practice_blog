@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "Articles" do
   let(:user) { FactoryGirl.create(:user) }
@@ -7,7 +7,7 @@ describe "Articles" do
   let(:comment) {FactoryGirl.create(:comment, article: article)}
   let(:new_article) do
     {
-      :title => 'new_article_title',
+      :title => "new_article_title",
       :content => "new_article_content",
       :user_id => user.id
     }
@@ -75,19 +75,19 @@ describe "Articles" do
       end
     end
 
-    describe '#create' do
-      it 'success' do
+    describe "#create" do
+      it "success" do
         expect {
-          post '/articles', :article => new_article
+          post "/articles", :article => new_article
         }.to change { Article.count }.by(1)
         expect(response).to be_redirect
       end
     end
 
-    describe '#update' do
-      it 'success' do
+    describe "#update" do
+      it "success" do
         article
-        update_data = { :content => 'new_content' }
+        update_data = { :content => "new_content" }
         put "/articles/#{article.id}", :article => update_data
         expect(response).to be_redirect
         article.reload
@@ -95,8 +95,8 @@ describe "Articles" do
       end
     end
 
-    describe '#destroy' do
-      it 'success' do
+    describe "#destroy" do
+      it "success" do
         article
         expect {
           delete "/articles/#{article.id}"
@@ -107,7 +107,7 @@ describe "Articles" do
 
     it "should have sign out link" do
       get root_path
-      expect(response.body).should match('Sign out')
+      expect(response.body).should match("Sign out")
     end
   end
 end

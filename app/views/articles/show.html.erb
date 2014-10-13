@@ -1,6 +1,6 @@
 <div class="col-md-6 col-md-offset-2">
 <p id="notice"><%= notice %></p>
-
+<% provide(:title, @article.title) %>
 
 
 <p>
@@ -19,7 +19,7 @@
 
 <p>
 </p>
-<%= link_to 'Edit', edit_article_path(@article) %>
+<%= link_to "修改", edit_article_path(@article) %>
 
 <h3>留言</h3>
 <% @comments.each do |comment| %>
@@ -30,7 +30,7 @@
   </div>
 <% end %>
 <%= paginate @comments %>
-<%= render 'comments/form' %>
+<%= render "comments/form" %>
 
-<%= link_to '回到所有文章', articles_path, class: "btn" %>
+<%= link_to "回到所有文章", articles_path, class: "btn" %>
 </div>
