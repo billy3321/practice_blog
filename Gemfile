@@ -16,6 +16,7 @@ gem 'bcrypt'
 gem 'kaminari'
 gem 'factory_girl_rails'
 gem 'kaminari-bootstrap'
+gem 'simple_form'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
