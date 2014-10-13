@@ -1,0 +1,15 @@
+development: &default
+  adapter: mysql2
+  database: "practice_blog_development"
+  host: "127.0.0.1"
+  encoding: "utf8"
+  username: "root"
+  password: ""
+
+test:
+  <<: *default
+  database: "practice_blog_test"
+
+
+production:
+  <<: *default
