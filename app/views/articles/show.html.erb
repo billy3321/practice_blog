@@ -1,23 +1,27 @@
+<div class="col-md-6 col-md-offset-2">
 <p id="notice"><%= notice %></p>
 
+
+
 <p>
-  <strong>User:</strong>
-  <%= @article.user.name %>
+  <h4><%= @article.title %></h4>
 </p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @article.title %>
+  <h6><small>
+    作者 <%= @article.user.name %>
+  </small></h6>
 </p>
 
 <p>
-  <strong>Content:</strong>
   <%= @article.content %>
 </p>
 
+<p>
+</p>
 <%= link_to 'Edit', edit_article_path(@article) %>
 
-<h3>Comments</h3>
+<h3>留言</h3>
 <% @comments.each do |comment| %>
   <div>
     <strong><%= comment.name %></strong>
@@ -28,4 +32,5 @@
 <%= paginate @comments %>
 <%= render 'comments/form' %>
 
-<%= link_to 'Back', articles_path %>
+<%= link_to '回到所有文章', articles_path, class: "btn" %>
+</div>

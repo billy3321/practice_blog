@@ -1,7 +1,7 @@
 <div class="col-md-6 col-md-offset-2">
 <h1>所有分類</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>名稱</th>
@@ -13,9 +13,9 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '顯示', category, class: "btn" %></td>
+        <td><%= link_to '修改', edit_category_path(category), class: "btn" %></td>
+        <td><%= link_to '刪除', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %></td>
       </tr>
     <% end %>
     <%= paginate @categories %>
@@ -23,6 +23,6 @@
 </table>
 <br>
 
-<%= link_to 'New Category', new_category_path, class: "btn" %>
+<%= link_to '新分類', new_category_path, class: "btn" %>
 </div>
 

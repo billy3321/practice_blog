@@ -11,8 +11,14 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="/home">首頁</a></li>
+              <li><a href="/">首頁</a></li>
               <li><a href="/help">幫助</a></li>
+              <% if user_signed_in? %>
+              <li><%= link_to "分類", categories_path %></li>
+              <li><%= link_to "所有文章", articles_path %></li>
+              <% else %>
+              <li><%= link_to "所有文章", articles_path %></li>
+              <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>

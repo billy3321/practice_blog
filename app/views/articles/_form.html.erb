@@ -1,4 +1,4 @@
-<%= form_for(@article) do |f| %>
+<%= form_for(@article, :html => {:class => "form-horizontal center"}) do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -11,20 +11,33 @@
     </div>
   <% end %>
 
+  <p>
+  <br>
+  <br>
+  <br>
   <%= f.hidden_field :user_id, :value => current_user.id %>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.select :category_id, Category.all.collect { |c| [ c.name, c.id] }, include_blank: false, prompt: "請選類別" %></td>
+  <div class="form-group">
+    <h4><%= f.label :category_id, "分類", class: "control-label col-md-3" %></h4>
+    <div class="col-md-6">
+      <%= f.select :category_id, Category.all.collect { |c| [ c.name, c.id] }, include_blank: false, prompt: "請選類別", class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+
+  <div class="form-group">
+    <h4><%= f.label :title, "文章標題", class: "control-label col-md-3" %></h4>
+    <div class="col-md-6">
+      <%= f.text_field :title , class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+
+  <div class="form-group">
+    <h4><%= f.label :content, "文章內容", class: "control-label col-md-3" %></h4>
+    <div class="col-md-6">
+      <%= f.text_area :content , class: "form-control", rows: "10" %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+      <%= f.submit '確定送出' , class: "btn btn-default btn-primary col-md-offset-3" %>
   </div>
+  </p>
 <% end %>

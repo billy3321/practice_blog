@@ -11,16 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+
+
+
+  <div class="form-group">
+    <h6><%= f.label :name, "匿稱", class: "control-label col-md-2" %></h6>
+    <div class="col-md-7">
+      <%= f.text_field :name , class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+  <br>
+  <br>
+
+  <div class="form-group">
+    <h6><%= f.label :content, "留言內容", class: "control-label col-md-2" %></h6>
+    <div class="col-md-7">
+      <%= f.text_area :content , class: "form-control" %>
+    </div>
   </div>
     <%= f.hidden_field :article_id %>
+  <br><br>
   <div class="actions">
-    <%= f.submit %>
+      <%= f.submit '確定送出' , class: "btn btn-default btn-primary col-md-offset-2" %>
   </div>
 <% end %>
