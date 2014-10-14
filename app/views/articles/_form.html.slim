@@ -1,0 +1,37 @@
+= simple_form_for(@article, html: {class: 'form-horizontal center' }) do |f|
+  - if @article.errors.any? 
+    .error_explanation
+      h2 
+        = pluralize(@article.errors.count, "error") 
+        prohibited this article from being saved:
+      ul
+        - @article.errors.full_messages.each do |message|
+        li = message
+  p
+  br
+  br
+  br
+  br
+
+  = f.hidden_field :user_id, :value => current_user.id
+  .form-group
+    h4 
+      = f.label :category_id, "分類", class: "control-label col-md-3"
+    .col-md-6
+      = f.input :category_id, as: :collection_select, collection: Category.all.map { |c| [c.name, c.id] }, input_html: { class: "form-control" }, label: false
+
+  .form-group
+    h4 
+      = f.label :title, "文章標題", class: "control-label col-md-3"
+    .col-md-6
+      = f.input :title , input_html: { class: "form-control" }, label: false
+
+  .form-group
+    h4 
+      = f.label :content, "文章內容", class: "control-label col-md-3"
+    .col-md-6
+      = f.input :content, as: :text, input_html: { class: "form-control" }, rows: "10", label: false
+
+  .actions
+    = f.submit '確定送出' , class: "btn btn-default btn-primary col-md-offset-3"
+
