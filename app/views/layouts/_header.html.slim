@@ -1,0 +1,31 @@
+div class="navbar navbar-default" role="navigation"
+  .container-fluid
+    .navbar-header
+      a class="navbar-brand" href="#" Practice Blog
+    .navbar-collapse.collapse
+      ul class="nav navbar-nav"
+        li
+          a href="/" 首頁
+        li
+          a href="/help" 幫助
+        - if user_signed_in?
+          li
+            = link_to "分類", categories_path
+          li
+            = link_to "所有文章", articles_path
+        - else
+          li
+            = link_to "所有文章", articles_path
+      ul class="nav navbar-nav navbar-right"
+        - if user_signed_in?
+          li 
+            = link_to "修改資料", edit_user_registration_path
+          li
+            = link_to "登出", destroy_user_session_path, :method => :delete
+        - else
+          li
+            = link_to "註冊", new_user_registration_path
+          li
+            = link_to "登入", new_user_session_path
+
+

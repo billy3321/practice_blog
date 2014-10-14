@@ -1,0 +1,23 @@
+doctype html
+
+html
+  head
+    title PracticeBlog | == yield(:title)
+    link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"
+    script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  body
+    - if notice
+      p class="alert alert-success" = notice
+
+    - if alert
+      p class="alert alert-danger" = alert
+
+    = render 'layouts/header'
+    .container
+      == yield
+
