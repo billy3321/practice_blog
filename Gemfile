@@ -18,6 +18,7 @@ gem 'factory_girl_rails'
 gem 'kaminari-bootstrap'
 gem 'simple_form'
 gem 'slim-rails'
+gem 'sidekiq'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
