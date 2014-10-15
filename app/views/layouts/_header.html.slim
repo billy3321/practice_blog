@@ -5,9 +5,9 @@ div class="navbar navbar-default" role="navigation"
     .navbar-collapse.collapse
       ul class="nav navbar-nav"
         li
-          a href="/" 首頁
+          = link_to "首頁", root_path
         li
-          a href="/help" 幫助
+          = link_to "幫助", help_path
         - if user_signed_in?
           li
             = link_to "分類", categories_path

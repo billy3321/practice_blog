@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy, :create]
+  #before_action :set_category, only: [:show, :edit, :update, :destroy, :create]
+  before_action :set_category, except: [:index, :new]
   before_action :authenticate_user!
 
   # GET /categories
@@ -27,16 +28,21 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        #format.json { render :show, status: :created, location: @category }
-      else
-        format.html { render :new }
-        #format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.save
+        redirect_to @category, notice: 'Category was successfully created.'
+    else
+      render :new
     end
+
+    # respond_to do |format|
+    #   if @category.save
+    #     format.html { redirect_to @category, notice: 'Category was successfully created.' }
+    #     #format.json { render :show, status: :created, location: @category }
+    #   else
+    #     format.html { render :new }
+    #     #format.json { render json: @category.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /categories/1
