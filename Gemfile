@@ -19,6 +19,7 @@ gem 'kaminari-bootstrap'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'sidekiq'
+gem 'redis'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
