@@ -23,13 +23,4 @@ class Article < ActiveRecord::Base
     index = 'index_' + id.to_s
     $redis.get(index)
   end
-
-  def set_job(job)
-    $redis.set(id, job)
-  end
-
-  def get_job()
-    $redis.get(id)
-  end
-
 end
