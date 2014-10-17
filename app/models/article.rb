@@ -6,4 +6,12 @@ class Article < ActiveRecord::Base
   validates_presence_of :title, :content, :user_id
 
   default_scope { order(created_at: :desc) }
+
+  def set_job(job)
+    $redis.set(id, job)
+  end
+
+  def get_job()
+    $redis.get(id)
+  end
 end

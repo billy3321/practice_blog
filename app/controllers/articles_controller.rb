@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @article.job = @article.get_job()
     @comments = @article.comments.order(created_at: :asc).page params[:page]
     @comment = @article.comments.build
   end
@@ -22,6 +23,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    puts @article.inspect
   end
 
   # POST /articles
@@ -29,6 +31,9 @@ class ArticlesController < ApplicationController
   def create
     if @article.save
       #render
+      if @article.job
+        @article.set_job(@article.job)
+      end
       redirect_to @article, notice: 'Article was successfully created.'
       #format.json { render :show, status: :created, location: @article }
     else
@@ -43,6 +48,9 @@ class ArticlesController < ApplicationController
   def update
     #respond_to do |format|
     if @article.update(article_params)
+      if @article.job
+        @article.set_job(@article.job)
+      end
       redirect_to @article, notice: 'Article was successfully updated.'
         #format.json { render :show, status: :ok, location: @article }
     else
@@ -55,11 +63,12 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.json
   def destroy
     @article.destroy
+    @article.set_job(nil)
     redirect_to articles_url, notice: 'Article was successfully destroyed.'
     #respond_to do |format|
       #format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       #format.json { head :no_content }
-    end
+    #end
   end
 
   private
@@ -70,7 +79,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:user_id, :title, :content, :category_id)
+      params.require(:article).permit(:user_id, :title, :content, :category_id, :job)
     end
-
 end
