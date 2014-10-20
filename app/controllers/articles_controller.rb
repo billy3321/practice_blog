@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
   def update
     #respond_to do |format|
     if @article.update(article_params)
-      @article.delay_for(5.minutes.from_now).set_random_string(@article.content)
+      @article.delay_for(5.minutes).set_random_string(@article.content)
       redirect_to @article, notice: 'Article was successfully updated.'
     else
       render :edit
