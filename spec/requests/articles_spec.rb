@@ -76,22 +76,31 @@ describe "Articles" do
     end
 
     describe "#create" do
-      it "success" do
+      it "success and sidekiq work" do
+        sidekiq_reset!
+        sidekiq_scheduled_job_reset!
+        expect(sidekiq_queue_size).to be(0)
         expect {
           post "/articles", :article => new_article
         }.to change { Article.count }.by(1)
         expect(response).to be_redirect
+        expect(sidekiq_scheduled_job_size).to eq(1)
       end
     end
 
     describe "#update" do
-      it "success" do
+      it "success and sidekiq work" do
+        sidekiq_reset!
+        sidekiq_scheduled_job_reset!
+        expect(sidekiq_queue_size).to be(0)
         article
         update_data = { :content => "new_content" }
         put "/articles/#{article.id}", :article => update_data
         expect(response).to be_redirect
         article.reload
         expect(article.content).to match(update_data[:content])
+        #Collector.should have_queued_job(1)
+        expect(sidekiq_scheduled_job_match(article, :set_random_string)).to eq(1)
       end
     end
 
@@ -107,7 +116,7 @@ describe "Articles" do
 
     it "should have sign out link" do
       get root_path
-      expect(response.body).should match("Sign out")
+      expect(response.body).to match("Sign out")
     end
   end
 end
