@@ -9,7 +9,7 @@ class Article < ActiveRecord::Base
 
   before_save do |article|
     begin
-      set_random_string(article.id)
+      article.delay_for(5.minutes).set_random_string(article.content)
     end
   end
 
