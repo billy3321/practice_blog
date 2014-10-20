@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'sidekiq'
 gem 'redis'
+gem 'sinatra', '>= 1.3.0', :require => nil
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
