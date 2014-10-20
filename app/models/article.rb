@@ -7,10 +7,10 @@ class Article < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
 
-  before_save do |article|
-    begin
-      article.delay_for(5.minutes).set_random_string(article.content)
-    end
+  before_save :delay_set_random_string
+
+  def delay_set_random_string
+    article.delay_for(5.minutes).set_random_string(article.content)
   end
 
   def set_random_string(id)
