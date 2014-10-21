@@ -29,13 +29,9 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     if @article.save
-      #render
       redirect_to @article, notice: 'Article was successfully created.'
-      #format.json { render :show, status: :created, location: @article }
     else
-      #render
       render :new
-      #format.json { render json: @article.errors, status: :unprocessable_entity }
     end
   end
 
@@ -45,10 +41,8 @@ class ArticlesController < ApplicationController
     #respond_to do |format|
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'
-        #format.json { render :show, status: :ok, location: @article }
     else
       render :edit
-        #format.json { render json: @article.errors, status: :unprocessable_entity }
     end
   end
 
@@ -57,10 +51,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     redirect_to articles_url, notice: 'Article was successfully destroyed.'
-    #respond_to do |format|
-      #format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
-      #format.json { head :no_content }
-    #end
+
   end
 
   private

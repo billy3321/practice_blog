@@ -8,22 +8,20 @@ class ProductsController < ApplicationController
     @product = @product_group.products.build
   end
 
-  # GET /products/1
-  # GET /products/1.json
+  # GET /product_group/#{product_group_id}/products/1
   def show
   end
 
-  # GET /products/new
+  # GET /product_group/#{product_group_id}/products/new
   def new
     @product = Product.new
   end
 
-  # GET /products/1/edit
+  # GET /product_group/#{product_group_id}/products/1/edit
   def edit
   end
 
-  # POST /products
-  # POST /products.json
+  # POST /product_group/#{product_group_id}/products/
   def create
     #@product = @product_group.product.build(params[:product])
     @product = Product.new(product_params)
@@ -32,40 +30,21 @@ class ProductsController < ApplicationController
     else
       render :new
     end
-
-    # respond_to do |format|
-    #   if @product.save
-    #     format.html { redirect_to @product, notice: 'Product was successfully created.' }
-    #     #format.json { render :show, status: :created, location: @product }
-    #   else
-    #     format.html { render :new }
-    #     #format.json { render json: @product.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
+  # PATCH/PUT /product_group/#{product_group_id}/products/1
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to product_group_product_path(@product_group, @product), notice: 'Product was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        #format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    if @product.update(product_params)
+      redirect_to product_group_product_path(@product_group, @product), notice: 'Product was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
+  # DELETE /product_group/#{product_group_id}/products/1
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      #format.json { head :no_content }
-    end
+    redirect_to product_group_products_path(@product_group), notice: 'Product was successfully destroyed.' }
   end
 
   private
