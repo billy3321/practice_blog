@@ -1,6 +1,6 @@
 h1 Editing product
 
-- simple_form_for(@product, url: product_group_product_path ,html: {class: 'form-horizontal center' }) do |f|
+- simple_form_for(@product, url: product_group_product_path, :method => :put, html: {class: 'form-horizontal center' }) do |f|
   = render :partial => 'form', :locals => { :f => f }
 
 = link_to 'Show', product_group_product_path(@product_group, @product), class: "btn"
