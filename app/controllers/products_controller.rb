@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = @product_group.product.build(params[:product])
-    @product = Product.new(product_params)
+    #@product = Product.new(product_params)
     if @product.save
         redirect_to @product, notice: 'Product was successfully created.'
     else
