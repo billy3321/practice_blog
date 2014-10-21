@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   devise_for :users
   #devise_for :users, :controllers => { :registration => "registration" }
 
+  resources :product_groups do
+    resources :products
+  end
+
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
   #match '/signup', to: 'users#new'

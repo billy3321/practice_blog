@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :product_group do
-    name "MyString"
+    sequence(:name)  { |n| "Product Group #{n}" }
   end
 end
