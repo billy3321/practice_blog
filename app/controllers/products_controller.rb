@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
   # DELETE /product_group/#{product_group_id}/products/1
   def destroy
     @product.destroy
-    redirect_to product_group_product_path(@product_group), notice: 'Product was successfully destroyed.'
+    redirect_to product_group_products_url(@product_group), notice: 'Product was successfully destroyed.'
   end
 
   private
@@ -59,6 +59,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name)
+      params.require(:product).permit(:name, :product_group_id)
     end
 end

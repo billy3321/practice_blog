@@ -11,9 +11,9 @@ table class="table"
     - @products.each do |product| 
       tr
         td = product.name
-        td = link_to 'Show', product_group_product(@product_group), class: "btn"
-        td = link_to 'Edit', edit_product_group_product_path(product), class: "btn"
-        td = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn"
+        td = link_to 'Show', product_group_products_path(@product_group), class: "btn"
+        td = link_to 'Edit', edit_product_group_product_path(@product_group, product), class: "btn"
+        td = link_to 'Destroy', product_group_product_path(@product_group, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn"
 
 br
 
