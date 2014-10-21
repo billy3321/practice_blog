@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
   # DELETE /product_group/#{product_group_id}/products/1
   def destroy
     @product.destroy
-    redirect_to product_group_products_path(@product_group), notice: 'Product was successfully destroyed.' }
+    redirect_to product_group_product_path(@product_group), notice: 'Product was successfully destroyed.'
   end
 
   private
