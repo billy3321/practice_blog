@@ -25,10 +25,10 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = @product_group.product.build(params[:product])
-    #@product = Product.new(product_params)
+    #@product = @product_group.product.build(params[:product])
+    @product = Product.new(product_params)
     if @product.save
-        redirect_to @product, notice: 'Product was successfully created.'
+        redirect_to product_group_product_path(@product_group, @product), notice: 'Product was successfully created.'
     else
       render :new
     end
@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to product_group_product_path(@product_group, @product), notice: 'Product was successfully updated.' }
         #format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }

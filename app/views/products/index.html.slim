@@ -11,10 +11,10 @@ table class="table"
     - @products.each do |product| 
       tr
         td = product.name
-        td = link_to 'Show', product
-        td = link_to 'Edit', edit_product_group_product_path(product) 
-        td = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+        td = link_to 'Show', product_group_product(@product_group), class: "btn"
+        td = link_to 'Edit', edit_product_group_product_path(product), class: "btn"
+        td = link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn"
 
 br
 
-= link_to 'New Product', new_product_group_product_path
+= link_to 'New Product', new_product_group_product_path(@product_group), class: "btn"

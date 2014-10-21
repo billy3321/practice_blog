@@ -1,5 +1,7 @@
 h1 New product
 
-= render 'form'
+= simple_form_for(@product, url: product_group_products_path ,html: {class: 'form-horizontal center' }) do |f|
+/= render 'form'
+  = render :partial => 'form', :locals => { :f => f}
 
-= link_to 'Back', product_group_products_path
+= link_to 'Back', product_group_products_path(@product_group), class: "btn"

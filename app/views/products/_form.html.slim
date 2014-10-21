@@ -1,26 +1,26 @@
-= simple_form_for(@product, html: {class: 'form-horizontal center' }) do |f|
-  - if @product.errors.any? 
-    .error_explanation
-      h2 
-        = pluralize(@product.errors.count, "error") 
-        prohibited this product from being saved:
-      ul
-        - @product.errors.full_messages.each do |message|
-        li = message
-  p
-  br
-  br
-  br
-  br
-  = f.hidden_field :product_group_id
+/ = simple_form_for(@product, url: product_group_products_path ,html: {class: 'form-horizontal center' }) do |f|
+- if @product.errors.any? 
+  .error_explanation
+    h2 
+      = pluralize(@product.errors.count, "error") 
+      prohibited this product from being saved:
+    ul
+      - @product.errors.full_messages.each do |message|
+      li = message
+p
+br
+br
+br
+br
+= f.hidden_field :product_group_id, :value => @product_group.id
 
-  .form-group
-    h4 
-      = f.label :name, "名稱", class: "control-label col-md-3"
-    .col-md-6
-      = f.input :name , input_html: { class: "form-control" }, label: false
-  br
-  br
-  .actions
-    = f.submit '確定送出' , class: "btn btn-default btn-primary col-md-offset-3"
+.form-group
+  h4 
+    = f.label :name, "名稱", class: "control-label col-md-3"
+  .col-md-6
+    = f.input :name , input_html: { class: "form-control" }, label: false
+br
+br
+.actions
+  = f.submit '確定送出' , class: "btn btn-default btn-primary col-md-offset-3"
   
