@@ -22,7 +22,6 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    puts @article.inspect
   end
 
   # POST /articles

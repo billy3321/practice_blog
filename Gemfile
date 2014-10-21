@@ -31,6 +31,10 @@ group :development, :test do
   gem 'venus', '~> 0.8.6'
 end
 
+group :test do
+  gem 'rspec-sidekiq'
+end
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
