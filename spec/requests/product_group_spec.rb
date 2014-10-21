@@ -2,15 +2,11 @@ require "spec_helper"
 
 describe "ProductGroups" do
 
-  let(:user) { FactoryGirl.create(:user) }
-  let(:category) {FactoryGirl.create(:category)}
-  let(:article) { FactoryGirl.create(:article, user: user, category: category)}
-  let(:product_group) {FactoryGirl.create(:product_group, article: article)}
+
+  let(:product_group) {FactoryGirl.create(:product_group)}
   let(:new_product_group) do
     {
       :name => "new_product_group_name",
-      :name => "new_product_group_name",
-      :article_id => article.id
     }
   end
 

@@ -4,6 +4,12 @@ describe "Products" do
 
   let(:product_group) {FactoryGirl.create(:product_group)}
   let(:product) {FactoryGirl.create(:product, product_group: product_group)}
+  let(:new_product) do
+    {
+      :name => "new_product_name",
+      :product_group_id => product_group.id
+    }
+  end
 
   describe "#new" do
     it "success" do

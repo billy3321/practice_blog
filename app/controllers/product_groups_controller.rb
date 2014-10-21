@@ -1,7 +1,9 @@
-class ProductGroupController < ApplicationController
+class ProductGroupsController < ApplicationController
+
+  before_action :set_product_group, only: [:show, :edit, :update, :destroy, :create]
 
   def index
-    @product_group = ProductGroup.all.page params[:page]
+    @product_groups = ProductGroup.all.page params[:page]
   end
 
   # GET /product_groups/1
@@ -64,6 +66,8 @@ class ProductGroupController < ApplicationController
   end
 
   private
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_product_group
       @product_group = params[:id] ? ProductGroup.find(params[:id]) : ProductGroup.new(product_group_params)

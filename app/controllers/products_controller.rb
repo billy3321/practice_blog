@@ -1,7 +1,10 @@
-class ProductController < ApplicationController
+class ProductsController < ApplicationController
+
+  before_filter :find_product_group
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :create]
 
   def index
-    @products = @product_group.products.all.paginate(:page => params[:page], :per_page => 30)
+    @products = @product_group.products.all
     @product = @product_group.products.build
   end
 
@@ -66,6 +69,10 @@ class ProductController < ApplicationController
   end
 
   private
+
+    def find_product_group
+      @product_group = ProductGroup.find(params[:product_group_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = params[:id] ? Product.find(params[:id]) : Product.new(product_params)
