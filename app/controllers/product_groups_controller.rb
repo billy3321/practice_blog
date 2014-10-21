@@ -41,12 +41,10 @@ class ProductGroupsController < ApplicationController
   # DELETE /product_groups/1
   def destroy
     @product_group.destroy
-    redirect_to product_groups_url, notice: 'ProductGroup was successfully destroyed.' }
+    redirect_to product_groups_url, notice: 'ProductGroup was successfully destroyed.'
   end
 
   private
-
-
     # Use callbacks to share common setup or constraints between actions.
     def set_product_group
       @product_group = params[:id] ? ProductGroup.find(params[:id]) : ProductGroup.new(product_group_params)
