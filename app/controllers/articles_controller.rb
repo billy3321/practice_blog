@@ -25,7 +25,6 @@ class ArticlesController < ApplicationController
   end
 
   # POST /articles
-  # POST /articles.json
   def create
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
@@ -35,9 +34,7 @@ class ArticlesController < ApplicationController
   end
 
   # PATCH/PUT /articles/1
-  # PATCH/PUT /articles/1.json
   def update
-    #respond_to do |format|
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'
     else
@@ -46,11 +43,9 @@ class ArticlesController < ApplicationController
   end
 
   # DELETE /articles/1
-  # DELETE /articles/1.json
   def destroy
     @article.destroy
     redirect_to articles_url, notice: 'Article was successfully destroyed.'
-
   end
 
   private
