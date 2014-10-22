@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141021074249) do
-=======
-ActiveRecord::Schema.define(version: 20141007062953) do
->>>>>>> spec still not work
 
   create_table "articles", force: true do |t|
     t.integer  "user_id"
