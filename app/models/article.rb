@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  include Sidekiq::Worker
   has_many :comments, :dependent => :destroy
   belongs_to :user
   belongs_to :category

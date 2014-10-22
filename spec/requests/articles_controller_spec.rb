@@ -77,23 +77,29 @@ describe "Articles" do
 
     describe "#create" do
       it "success and sidekiq work" do
+        sidekiq_reset!
+        expect(sidekiq_scheduled_all_job_size).to eq(0)
         expect {
           post "/articles", :article => new_article
         }.to change { Article.count }.by(1)
         expect(response).to be_redirect
-        expect(Article.first.method :set_random_string).to be_delayed(Article.first.content).for 5.minutes
+        expect(sidekiq_scheduled_job_size(Article.first, :set_random_string)).to eq(1)
+        expect(sidekiq_scheduled_all_job_size).to eq(1)
       end
     end
 
     describe "#update" do
       it "success and sidekiq work" do
+        sidekiq_reset!
+        expect(sidekiq_scheduled_all_job_size).to eq(0)
         article
         update_data = { :content => "new_content" }
         put "/articles/#{article.id}", :article => update_data
         expect(response).to be_redirect
         article.reload
         expect(article.content).to match(update_data[:content])
-        expect(article.method :set_random_string).to be_delayed(article.content).for 5.minutes
+        expect(sidekiq_scheduled_job_size(article, :set_random_string)).to eq(2)
+        expect(sidekiq_scheduled_all_job_size).to eq(2)
       end
     end
 
