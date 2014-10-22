@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
 
   def index
     @products = @product_group.products.all
-    @product = @product_group.products.build
   end
 
   # GET /product_group/#{product_group_id}/products/1
@@ -23,7 +22,6 @@ class ProductsController < ApplicationController
 
   # POST /product_group/#{product_group_id}/products/
   def create
-    #@product = @product_group.product.build(params[:product])
     @product = Product.new(product_params)
     if @product.save
       redirect_to product_group_product_path(@product_group, @product), notice: 'Product was successfully created.'
