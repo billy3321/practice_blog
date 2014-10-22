@@ -15,4 +15,6 @@
 /log/*.log
 /tmp
 
+dump.rdb
+.DS_Store
 config/database.yml
