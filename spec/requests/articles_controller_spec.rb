@@ -86,7 +86,6 @@ describe "Articles" do
 
     describe "#update" do
       it "success" do
-        article
         update_data = { :content => "new_content" }
         put "/articles/#{article.id}", :article => update_data
         expect(response).to be_redirect
@@ -107,7 +106,7 @@ describe "Articles" do
 
     it "should have sign out link" do
       get root_path
-      expect(response.body).should match("Sign out")
+      expect(response.body).to match("Sign out")
     end
   end
 end

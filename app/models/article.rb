@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  include Sidekiq::Worker
   has_many :comments, :dependent => :destroy
   belongs_to :user
   belongs_to :category
@@ -7,10 +8,10 @@ class Article < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
 
-  before_save do |article|
-    begin
-      set_random_string(article.id)
-    end
+  after_save :delay_set_random_string
+
+  def delay_set_random_string
+    self.delay_for(5.minutes).set_random_string(self.content)
   end
 
   def set_random_string(id)

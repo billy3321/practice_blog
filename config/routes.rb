@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   resources :categories
 
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
 
   root  'static_pages#home'
   match '/help',    to: 'static_pages#help',    via: 'get'
+  mount Sidekiq::Web => '/sidekiq'
   #match '/signup', to: 'users#new'
   #match '/signin', to: 'users#sign_in'
   #match '/signout', to: 'users#sign_out'
