@@ -16,6 +16,8 @@ div class="navbar navbar-default" role="navigation"
         - else
           li
             = link_to "所有文章", articles_path
+        li
+          = link_to "產品組合", product_groups_path
       ul class="nav navbar-nav navbar-right"
         - if user_signed_in?
           li 

@@ -1,0 +1,7 @@
+h1 Editing product group
+
+= simple_form_for(@product_group, html: {class: 'form-horizontal center' }) do |f|
+  = render :partial => 'form', :locals => { :f => f }
+
+= link_to 'Show', @product_group, class: "btn"
+= link_to 'Back', product_groups_path, class: "btn"
