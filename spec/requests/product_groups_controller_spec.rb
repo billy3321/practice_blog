@@ -10,11 +10,6 @@ describe "ProductGroups" do
       :name => "new_product_group_name",
     }
   end
-  let(:update_nested_product) do
-    {
-      :name => "new product_name"
-    }
-  end
 
   describe "#new" do
     it "success" do
