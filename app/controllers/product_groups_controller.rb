@@ -8,15 +8,19 @@ class ProductGroupsController < ApplicationController
 
   # GET /product_groups/1
   def show
+    @products = @product_group.products.all
   end
 
   # GET /product_groups/new
   def new
     @product_group = ProductGroup.new
+    @product = @product_group.products.build
+
   end
 
   # GET /product_groups/1/edit
   def edit
+    @product = @product_group.products.build
   end
 
   # POST /product_groups
@@ -52,7 +56,8 @@ class ProductGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_group_params
-      params.require(:product_group).permit(:name)
+      params.require(:product_group).permit(:name,
+        :products_attributes => [:id, :name, :product_group_id])
     end
 end
 
