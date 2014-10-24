@@ -1,9 +1,10 @@
 p id="notice" = notice
 
 p
-  strong Name:
+  strong 名稱
+  br
   = @product.name
 
 
-= link_to 'Edit', edit_product_group_product_path(@product_group, @product), class: "btn"
+= link_to '修改產品', edit_product_group_product_path(@product_group, @product), class: "btn"
 = link_to 'Back', product_group_products_path(@product_group), class: "btn"

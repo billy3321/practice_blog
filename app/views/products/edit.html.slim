@@ -1,7 +1,7 @@
-h1 Editing product
+h1 修改產品
 
 = simple_form_for(@product, url: product_group_product_path, :method => :put, html: {class: 'form-horizontal center' }) do |f|
   = render :partial => 'form', :locals => { :f => f }
 
-= link_to 'Show', product_group_product_path(@product_group, @product), class: "btn"
+= link_to '產品內容', product_group_product_path(@product_group, @product), class: "btn"
 = link_to 'Back', product_group_products_path(@product_group), class: "btn"

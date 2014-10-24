@@ -1,9 +1,9 @@
-h1 Listing product_groups
+h1 所有產品組合
 
 table class="table"
   thead
     tr
-      th Name
+      th 名稱
       th colspan="3"
 
 
@@ -11,11 +11,11 @@ table class="table"
     - @product_groups.each do |product_group| 
       tr
         td = product_group.name 
-        td = link_to 'Show', product_group_path(product_group)
-        td = link_to 'Edit', edit_product_group_path(product_group) 
-        td = link_to 'Destroy', product_group_path(product_group), method: :delete, data: { confirm: 'Are you sure?' } 
+        td = link_to '顯示', product_group_path(product_group), class: "btn"
+        td = link_to '修改', edit_product_group_path(product_group), class: "btn"
+        td = link_to '刪除', product_group_path(product_group), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn"
 
 
 br
 
-= link_to 'New Product Group', new_product_group_path, class: "btn"
+= link_to '新增產品組合', new_product_group_path, class: "btn"
