@@ -4,3 +4,9 @@
       = f.label :name, "產品名稱", class: "control-label col-md-3"
     .col-md-6
       = f.input :name, input_html: { class: "form-control" }, label: false
+
+  .form-group
+    h4 
+      = f.label :_destroy, "刪除", class: "control-label col-md-3"
+    .col-md-6
+      = f.input :_destroy, :as => :boolean, input_html: {checked: false, class: "form-control"}, label: false

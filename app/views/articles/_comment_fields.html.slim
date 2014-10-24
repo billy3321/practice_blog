@@ -9,4 +9,11 @@
     h4 
       = f.label :content, "內容", class: "control-label col-md-3"
     .col-md-6
-      = f.input :content, input_html: { class: "form-control" }, label: false
+      = f.input :content, as: :text, input_html: { class: "form-control" }, rows: "3", label: false
+
+  .form-group
+    h4 
+      = f.label :_destroy, "刪除", class: "control-label col-md-3"
+    .col-md-6
+      = f.input :_destroy, :as => :boolean, input_html: {checked: false, class: "form-control"}, label: false
+    
