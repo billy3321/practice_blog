@@ -5,6 +5,7 @@ class Article < ActiveRecord::Base
   belongs_to :category
   max_paginates_per 10
   validates_presence_of :title, :content, :user_id
+  accepts_nested_attributes_for :comments, :reject_if => :all_blank, :allow_destroy => true
 
   default_scope { order(created_at: :desc) }
 

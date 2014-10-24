@@ -94,6 +94,26 @@ describe "Articles" do
       end
     end
 
+    describe "nested #update" do
+      it "success" do
+        comment
+        update_comment_data = {
+          :comments_attributes => [
+            {
+              :id => comment.id,
+              :name => 'new_comment_name',
+              :content => 'new_comment_content'
+            }
+          ]
+        }
+        put "/articles/#{comment.article.id}", :article => update_comment_data
+        expect(response).to be_redirect
+        comment.reload
+        expect(comment.name).to match(update_comment_data[:comments_attributes][0][:name])
+        expect(comment.content).to match(update_comment_data[:comments_attributes][0][:content])
+      end
+    end
+
     describe "#destroy" do
       it "success" do
         article

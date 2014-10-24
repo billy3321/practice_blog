@@ -4,19 +4,15 @@ describe "ProductGroups" do
 
 
   let(:product_group) {FactoryGirl.create(:product_group)}
+  let(:product) {FactoryGirl.create(:product)}
   let(:new_product_group) do
     {
       :name => "new_product_group_name",
     }
   end
-  let(:new_nested_product_group) do
+  let(:update_nested_product) do
     {
-      :name => "new_product_group_name",
-      :product_attributes => [
-        {
-          :name => "new product_name"
-        }
-      ]
+      :name => "new product_name"
     }
   end
 
@@ -43,14 +39,6 @@ describe "ProductGroups" do
     end
   end
 
-  describe "nested #create" do
-    it "success" do
-      expect {
-        post "/product_groups", :product_group => new_nested_product_group
-      }.to change { Product.count }.by(1)
-    end
-  end
-
   describe "#update" do
     it "success" do
       product_group
@@ -59,6 +47,24 @@ describe "ProductGroups" do
       expect(response).to be_redirect
       product_group.reload
       expect(product_group.name).to match(update_data[:name])
+    end
+  end
+
+  describe "nested #update" do
+    it "success" do
+      product
+      update_product_data = {
+        :products_attributes => [
+          {
+            :id => product.id,
+            :name => 'new_product_name'
+          }
+        ]
+      }
+      put "/product_groups/#{product.product_group_id}", :product_group => update_product_data
+      expect(response).to be_redirect
+      product.reload
+      expect(product.name).to match(update_product_data[:products_attributes][0][:name])
     end
   end
 

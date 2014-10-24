@@ -11,7 +11,7 @@ table class="table"
     - @products.each do |product| 
       tr
         td = product.name
-        td = link_to '顯示', product_group_products_path(@product_group), class: "btn"
+        td = link_to '顯示', product_group_product_path(@product_group, product), class: "btn"
         td = link_to '修改', edit_product_group_product_path(@product_group, product), class: "btn"
         td = link_to '刪除', product_group_product_path(@product_group, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn"
 
