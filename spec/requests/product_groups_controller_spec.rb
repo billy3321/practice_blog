@@ -63,6 +63,24 @@ describe "ProductGroups" do
     end
   end
 
+  describe "nested #update delete" do
+    it "success" do
+      product
+      update_product_data = {
+        :products_attributes => [
+          {
+            :id => product.id,
+            :_destroy => 1
+          }
+        ]
+      }
+      product_count = Product.count
+      put "/product_groups/#{product.product_group_id}", :product_group => update_product_data
+      expect(response).to be_redirect
+      expect(product_count - Product.count).to eq(1)
+    end
+  end
+
   describe "#destroy" do
     it "success" do
       product_group
