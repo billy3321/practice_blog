@@ -35,7 +35,7 @@
   - unless @article.new_record?
     #comments
       = f.simple_fields_for :comments do |comment|
-        = render 'comment_fields', :f => comment
+        = render :partial => 'comment_fields', :locals => { :f => comment }
 
   .actions
     = f.submit '確定送出' , class: "btn btn-default btn-primary col-md-offset-3"

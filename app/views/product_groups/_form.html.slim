@@ -17,7 +17,7 @@
 - unless @product_group.new_record?
   #products
     = f.simple_fields_for :products do |product|
-      = render 'product_fields', :f => product
+      = render :partial => 'product_fields', :locals => { :f => product }
 
 .actions
   = f.submit '確定送出' , class: "btn btn-default btn-primary col-md-offset-3"
