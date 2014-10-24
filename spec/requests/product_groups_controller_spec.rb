@@ -9,6 +9,16 @@ describe "ProductGroups" do
       :name => "new_product_group_name",
     }
   end
+  let(:new_nested_product_group) do
+    {
+      :name => "new_product_group_name",
+      :product_attributes => [
+        {
+          :name => "new product_name"
+        }
+      ]
+    }
+  end
 
   describe "#new" do
     it "success" do
@@ -30,6 +40,14 @@ describe "ProductGroups" do
         post "/product_groups", :product_group => new_product_group
       }.to change { ProductGroup.count }.by(1)
       expect(response).to be_redirect
+    end
+  end
+
+  describe "nested #create" do
+    it "success" do
+      expect {
+        post "/product_groups", :product_group => new_nested_product_group
+      }.to change { Product.count }.by(1)
     end
   end
 
