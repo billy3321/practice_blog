@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :item do
-    name "MyString"
+    sequence(:name)  { |n| "Item #{n}" }
   end
 end
