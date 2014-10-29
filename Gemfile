@@ -21,6 +21,7 @@ gem 'slim-rails'
 gem 'sidekiq'
 gem 'redis'
 gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'chosen-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
