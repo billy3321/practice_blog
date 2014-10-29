@@ -1,24 +1,20 @@
-p id="notice" = notice
-
-p
-  strong Name:
-  = @product.name
+h1 Listing items
 
 table class="table"
   thead
     tr
-      th Item Name
+      th Name
       th colspan="3"
 
 
   tbody
-    - @product.items.each do |item| 
+    - @items.each do |item| 
       tr
         td = item.name
         td = link_to 'Show', item_path(item), class: "btn"
         td = link_to 'Edit', edit_item_path(item), class: "btn"
         td = link_to 'Destroy', item_path(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn"
 
+br
 
-= link_to 'Edit', edit_product_group_product_path(@product_group, @product), class: "btn"
-= link_to 'Back', product_group_products_path(@product_group), class: "btn"
+= link_to 'New Item', new_item_path(@item_group), class: "btn"
