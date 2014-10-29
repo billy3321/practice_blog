@@ -23,6 +23,7 @@ gem 'redis'
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'settingslogic'
 gem 'jquery-ui-rails'
+gem 'chosen-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
