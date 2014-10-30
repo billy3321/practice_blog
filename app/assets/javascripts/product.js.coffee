@@ -2,14 +2,3 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-ready = ->
-  # enable chosen js
-  $('.chosen-select').chosen
-    search_contains: true
-    allow_single_deselect: true
-    no_results_text: 'No results matched'
-    width: '200px'
-  $(".chosen-select").trigger('chosen:updated')
-
-$(document).ready(ready)
-$(document).on('page:load', ready)

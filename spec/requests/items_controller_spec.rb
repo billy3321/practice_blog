@@ -3,7 +3,7 @@ require "spec_helper"
 describe "Item" do
 
 
-  let(:item) {FactoryGirl.create(:item)}
+  let(:item) { FactoryGirl.create(:item) }
   let(:new_item) do
     {
       :name => "new_item_name",

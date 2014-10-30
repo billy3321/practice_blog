@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Product do
-  2.times do
-    FactoryGirl.create :item
+  FactoryGirl.create_list(:item, 2)
   end
   let(:product) { FactoryGirl.create(:product) }
 
