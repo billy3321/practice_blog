@@ -13,5 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery-ui
+//= require jquery-ui/datepicker
 //= require_tree .
+
+var ready = function(){
+  $( ".datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
