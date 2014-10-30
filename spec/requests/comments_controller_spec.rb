@@ -3,9 +3,9 @@ require "spec_helper"
 describe "Comments" do
 
   let(:user) { FactoryGirl.create(:user) }
-  let(:category) {FactoryGirl.create(:category)}
-  let(:article) { FactoryGirl.create(:article, user: user, category: category)}
-  let(:comment) {FactoryGirl.create(:comment, article: article)}
+  let(:category) { FactoryGirl.create(:category) }
+  let(:article) { FactoryGirl.create(:article, user: user, category: category) }
+  let(:comment) { FactoryGirl.create(:comment, article: article) }
   let(:new_comment) do
     {
       :name => "new_comment_name",

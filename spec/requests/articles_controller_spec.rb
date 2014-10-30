@@ -2,9 +2,9 @@ require "spec_helper"
 
 describe "Articles" do
   let(:user) { FactoryGirl.create(:user) }
-  let(:category) {FactoryGirl.create(:category)}
-  let(:article) { FactoryGirl.create(:article, user: user, category: category)}
-  let(:comment) {FactoryGirl.create(:comment, article: article)}
+  let(:category) { FactoryGirl.create(:category) }
+  let(:article) { FactoryGirl.create(:article, user: user, category: category) }
+  let(:comment) { FactoryGirl.create(:comment, article: article) }
   let(:new_article) do
     {
       :title => "new_article_title",
@@ -125,10 +125,9 @@ describe "Articles" do
             }
           ]
         }
-        comment_count = Comment.count
-        put "/articles/#{comment.article.id}", :article => update_comment_data
-        expect(response).to be_redirect
-        expect(comment_count - Comment.count).to eq(1)
+        expect {
+          put "/articles/#{comment.article.id}", :article => update_comment_data
+        }.to change { Comment.count }.by(-1)
       end
     end
 

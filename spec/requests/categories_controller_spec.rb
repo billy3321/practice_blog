@@ -4,7 +4,7 @@ require "spec_helper"
 
 describe "Categories" do
   let(:user) { FactoryGirl.create(:user) }
-  let(:category) {FactoryGirl.create(:category)}
+  let(:category) { FactoryGirl.create(:category) }
   let(:new_category) do
     {
       :name => "new_category"

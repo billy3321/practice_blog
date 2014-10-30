@@ -2,8 +2,8 @@ require "spec_helper"
 
 describe "Products" do
 
-  let(:product_group) {FactoryGirl.create(:product_group)}
-  let(:product) {FactoryGirl.create(:product)}
+  let(:product_group) { FactoryGirl.create(:product_group) }
+  let(:product) { FactoryGirl.create(:product) }
   let(:new_product) do
     {
       :name => "new_product_name",

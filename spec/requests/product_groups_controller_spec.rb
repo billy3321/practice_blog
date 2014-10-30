@@ -3,8 +3,8 @@ require "spec_helper"
 describe "ProductGroups" do
 
 
-  let(:product_group) {FactoryGirl.create(:product_group)}
-  let(:product) {FactoryGirl.create(:product)}
+  let(:product_group) { FactoryGirl.create(:product_group) }
+  let(:product) { FactoryGirl.create(:product) }
   let(:new_product_group) do
     {
       :name => "new_product_group_name",
@@ -74,10 +74,9 @@ describe "ProductGroups" do
           }
         ]
       }
-      product_count = Product.count
-      put "/product_groups/#{product.product_group_id}", :product_group => update_product_data
-      expect(response).to be_redirect
-      expect(product_count - Product.count).to eq(1)
+      expect {
+        put "/product_groups/#{product.product_group_id}", :product_group => update_product_data
+      }.to change { Product.count }.by(-1)
     end
   end
 
