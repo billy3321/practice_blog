@@ -11,6 +11,8 @@
         | 作者 #{@article.user.name}
         br
         | 亂數 #{@article.get_random_string}
+        br
+        | 發表於 #{@article.publish_at}
 
   p #{@article.content}
 
