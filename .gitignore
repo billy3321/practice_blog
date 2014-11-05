@@ -19,3 +19,4 @@
 dump.rdb
 .DS_Store
 config/database.yml
+config/config.yml
