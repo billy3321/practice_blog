@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Item do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:item) {FactoryGirl.create(:item)}
+
+  it "#factory_creat_success" do
+    expect {
+      FactoryGirl.create :item
+    }.to change { Item.count }.by(1)
+  end
 end
