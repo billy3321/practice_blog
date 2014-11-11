@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   #devise_for :users, :controllers => { :registration => "registration" }
+  resources :users, :only => [:show]
 
   resources :product_groups do
     resources :products
