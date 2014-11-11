@@ -106,7 +106,7 @@ describe "Articles" do
 
     it "should have sign out link" do
       get root_path
-      expect(response.body).to match("Sign out")
+      expect(response.body).to match("登出")
     end
   end
 end
