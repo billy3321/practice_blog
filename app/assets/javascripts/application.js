@@ -15,10 +15,21 @@
 //= require turbolinks
 //= require jquery-ui/datepicker
 //= require_tree .
+//= require chosen-jquery
 
 var ready = function(){
+  // datapicker
   $( ".datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+  // enable chosen js
+  $('.chosen-select').chosen({
+    search_contains: true,
+    allow_single_deselect: true,
+    no_results_text: 'No results matched',
+    width: '200px',
+  });
+  $(".chosen-select").trigger('chosen:updated');
 };
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
