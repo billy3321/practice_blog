@@ -1,0 +1,40 @@
+- if @photo.errors.any? 
+  .error_explanation
+    h2 
+      = pluralize(@photo.errors.count, "error") 
+      prohibited this photo from being saved:
+    ul
+      - @photo.errors.full_messages.each do |message|
+      li = message
+p
+br
+br
+= image_tag(@photo.image.thumb.url) if @photo.image? 
+br
+br
+br
+br
+
+.form-group
+  h4 
+    = f.label :title, "標題", class: "control-label col-md-3"
+  .col-md-6
+    = f.input :title , input_html: { class: "form-control" }, label: false
+
+.form-group
+  h4 
+    = f.label :description, "描述", class: "control-label col-md-3"
+  .col-md-6
+    = f.input :description, as: :text, input_html: { class: "form-control" }, rows: "10", label: false
+
+.form-group
+    h4 
+      = f.label :image, "上傳圖片", class: "control-label col-md-3"
+    .col-md-6
+      = f.file_field :image
+
+br
+br
+.actions
+  = f.submit '確定送出' , class: "btn btn-default btn-primary col-md-offset-3"
+  
