@@ -5,6 +5,7 @@ namespace :dev do
     "dev:fake_users",
     "dev:fake_categories",
     "dev:fake_articles",
+    "dev:fake_comments",
     "dev:fake_product_groups",
     "dev:fake_products"
     ]
@@ -22,6 +23,12 @@ namespace :dev do
   task :fake_articles => :environment do
     Article.destroy_all
     Article.create!(:id => 10, :title => "Fake Article", :content => "Generate by Dev Fake", :category_id => 10, :user_id => 10)
+  end
+
+  task :fake_comments => :environment do
+    Comment.destroy_all
+    Comment.create!(:id => 5, :name => "Fake User", :content => "Fake Content 1", :article_id => 10)
+    Comment.create!(:id => 6, :name => "Fake User", :content => "Fake Content 2", :article_id => 10)
   end
 
   task :fake_product_groups => :environment do
