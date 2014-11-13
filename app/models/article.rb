@@ -11,7 +11,7 @@ class Article < ActiveRecord::Base
 
   after_save :delay_set_random_string
 
-  def self.recent(t=(Time.now - 5.days))
+  def self.recent(t=(Time.now - 7.days))
     where(["created_at > ? ", t ])
   end
 
