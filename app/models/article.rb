@@ -11,6 +11,19 @@ class Article < ActiveRecord::Base
 
   after_save :delay_set_random_string
 
+  def self.recent(t=(Time.now - 5.days))
+    where(["created_at > ? ", t ])
+  end
+
+  def self.search_content(query='')
+    if query.blank?
+      self.all
+    else
+      q = "%#{query}%"
+      where("content like ?", q)
+    end
+  end
+
   def delay_set_random_string
     self.delay_for(5.minutes).set_random_string(self.content)
   end
