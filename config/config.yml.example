@@ -6,7 +6,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  neat_setting: 800
+  admin_email: "admin@test.com"
 
 test:
   <<: *defaults
