@@ -10,6 +10,12 @@ class Article < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
 
   after_save :delay_set_random_string
+  scope :search_content, lambda { |query| where("content like ?", "%#{query}%") }
+  scope :in_week, lambda { where("created_at >= ?", Time.now - 1.week) }
+
+  def self.recent(t=(Time.now - 7.days))
+    where(["created_at > ? ", t ])
+  end
 
   def delay_set_random_string
     self.delay_for(5.minutes).set_random_string(self.content)
