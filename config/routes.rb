@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :articles
 
   resources :items
+  resources :photos
 
   devise_for :users
   #devise_for :users, :controllers => { :registration => "registration" }

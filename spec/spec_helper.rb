@@ -30,6 +30,11 @@ RSpec.configure do |config|
     # Clear all sidekiq queue after test
     sidekiq_reset!
   end
+  config.after(:each) do
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end
+  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

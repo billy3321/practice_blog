@@ -1,0 +1,22 @@
+h1 Listing photos
+
+table class="table"
+  thead
+    tr
+      th 標題
+      th 圖片
+      th colspan="3"
+
+
+  tbody
+    - @photos.each do |photo| 
+      tr
+        td = photo.title
+        td = link_to image_tag(photo.image.thumb.url), photo.image_url if photo.image? 
+        td = link_to 'Show', photo_path(photo), class: "btn"
+        td = link_to 'Edit', edit_photo_path(photo), class: "btn"
+        td = link_to 'Destroy', photo_path(photo), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn"
+
+br
+
+= link_to 'New Item', new_photo_path(@photo_group), class: "btn"
