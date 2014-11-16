@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
   include Sidekiq::Worker
-  has_many :comments, :dependent => :destroy
+  has_many :comments, as: :commentable, :dependent => :destroy
   belongs_to :user
   belongs_to :category
   max_paginates_per 10
