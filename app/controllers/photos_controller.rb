@@ -11,6 +11,8 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @comments = @photo.comments.order(created_at: :asc).page params[:page]
+    @comment = @photo.comments.build
   end
 
   # GET /photos/new

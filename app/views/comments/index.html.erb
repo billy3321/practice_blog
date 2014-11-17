@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Article</th>
+      <th colspan="2">Commentable</th>
       <th>Content</th>
       <th colspan="3"></th>
     </tr>
@@ -14,7 +14,8 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.name %></td>
-        <td><%= comment.article_id %></td>
+        <td><%= comment.commentable_id %></td>
+        <td><%= comment.commentable_type %></td>
         <td><%= comment.content %></td>
         <td><%= link_to 'Show', comment %></td>
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
