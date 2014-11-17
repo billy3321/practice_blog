@@ -4,7 +4,7 @@ describe "Articles" do
   let(:user) { FactoryGirl.create(:user) }
   let(:category) { FactoryGirl.create(:category) }
   let(:article) { FactoryGirl.create(:article, user: user, category: category) }
-  let(:comment) { FactoryGirl.create(:comment, article: article) }
+  let(:comment) { FactoryGirl.create(:comment, commentable: article) }
   let(:new_article) do
     {
       :title => "new_article_title",
@@ -106,7 +106,7 @@ describe "Articles" do
             }
           ]
         }
-        put "/articles/#{comment.article.id}", :article => update_comment_data
+        put "/articles/#{comment.commentable_id}", :article => update_comment_data
         expect(response).to be_redirect
         comment.reload
         expect(comment.name).to match(update_comment_data[:comments_attributes][0][:name])
@@ -126,7 +126,7 @@ describe "Articles" do
           ]
         }
         expect {
-          put "/articles/#{comment.article.id}", :article => update_comment_data
+          put "/articles/#{comment.commentable_id}", :article => update_comment_data
         }.to change { Comment.count }.by(-1)
       end
     end

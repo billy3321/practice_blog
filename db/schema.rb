@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20141116184804) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
-    t.string   "job"
     t.date     "publish_at"
   end
 

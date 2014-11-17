@@ -5,12 +5,13 @@ describe "Comments" do
   let(:user) { FactoryGirl.create(:user) }
   let(:category) { FactoryGirl.create(:category) }
   let(:article) { FactoryGirl.create(:article, user: user, category: category) }
-  let(:comment) { FactoryGirl.create(:comment, article: article) }
+  let(:comment) { FactoryGirl.create(:comment, commentable: article) }
   let(:new_comment) do
     {
       :name => "new_comment_name",
       :content => "new_comment_content",
-      :article_id => article.id
+      :commentable_id => article.id,
+      :commentable_type => "Article"
     }
   end
 

@@ -27,8 +27,8 @@ namespace :dev do
 
   task :fake_comments => :environment do
     Comment.destroy_all
-    Comment.create!(:name => "Fake User", :content => "Fake Content 1", :article_id => Article.first.id)
-    Comment.create!(:name => "Fake User", :content => "Fake Content 2", :article_id => Article.first.id)
+    Comment.create!(:name => "Fake User", :content => "Fake Content 1", :commentable_id => Article.first.id, :commentable_type => "Article")
+    Comment.create!(:name => "Fake User", :content => "Fake Content 2", :commentable_id => Article.first.id, :commentable_type => "Article")
   end
 
   task :fake_product_groups => :environment do
