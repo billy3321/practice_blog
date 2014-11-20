@@ -6,12 +6,21 @@ describe "Comments" do
   let(:category) { FactoryGirl.create(:category) }
   let(:article) { FactoryGirl.create(:article, user: user, category: category) }
   let(:comment) { FactoryGirl.create(:comment, commentable: article) }
-  let(:new_comment) do
+  let(:photo) { FactoryGirl.create(:photo, user: user) }
+  let(:new_article_comment) do
     {
       :name => "new_comment_name",
       :content => "new_comment_content",
       :commentable_id => article.id,
       :commentable_type => "Article"
+    }
+  end
+  let(:new_photo_comment) do
+    {
+      :name => "new_comment_name",
+      :content => "new_comment_content",
+      :commentable_id => photo.id,
+      :commentable_type => "Photo"
     }
   end
 
@@ -29,10 +38,19 @@ describe "Comments" do
     end
   end
 
-  describe "#create" do
+  describe "#create article comments" do
     it "success" do
       expect {
-        post "/comments", :comment => new_comment
+        post "/comments", :comment => new_article_comment
+      }.to change { Comment.count }.by(1)
+      expect(response).to be_redirect
+    end
+  end
+
+  describe "#create photo comments" do
+    it "success" do
+      expect {
+        post "/comments", :comment => new_photo_comment
       }.to change { Comment.count }.by(1)
       expect(response).to be_redirect
     end
