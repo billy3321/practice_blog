@@ -18,4 +18,17 @@ br
 br
 
 = link_to 'Edit', edit_photo_path(@photo), class: "btn"
+
+h3 留言
+- @comments.each do |c|
+  div
+    strong 
+      = c.name
+    br
+    p 
+      = c.content
+
+= paginate @comments
+= render "comments/form"
+
 = link_to 'Back', photos_path, class: "btn"

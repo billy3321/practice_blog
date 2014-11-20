@@ -29,7 +29,8 @@
       <%= f.text_area :content , class: "form-control" %>
     </div>
   </div>
-    <%= f.hidden_field :article_id %>
+    <%= f.hidden_field :commentable_id %>
+    <%= f.hidden_field :commentable_type %>
   <br><br>
   <div class="actions">
       <%= f.submit '確定送出' , class: "btn btn-default btn-primary col-md-offset-2" %>
