@@ -14,7 +14,7 @@
         br
         | 發表於 #{@article.publish_at}
 
-  p #{@article.content}
+  p #{@article.content.html_safe}
 
   p
 
