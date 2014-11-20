@@ -16,6 +16,7 @@
 //= require jquery-ui/datepicker
 //= require_tree .
 //= require chosen-jquery
+//= require ckeditor-jquery
 
 var ready = function(){
   // datapicker
@@ -28,6 +29,7 @@ var ready = function(){
     width: '200px',
   });
   $(".chosen-select").trigger('chosen:updated');
+  $('.ckeditor').ckeditor();
 };
 
 $(document).ready(ready);

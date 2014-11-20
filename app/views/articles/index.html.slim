@@ -14,7 +14,7 @@
         tr
           td #{article.user.name}
           td #{article.title}
-          td #{article.content}
+          td #{article.content.html_safe}
           td #{article.publish_at}
           td = link_to "閱讀", article, class: "btn"
           td = link_to "修改", edit_article_path(article), class: "btn"
