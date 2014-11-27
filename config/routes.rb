@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :articles
+  resources :articles do
+    collection do
+      match 'search' => 'people#search', via: [:get, :post], as: :search
+    end
+  end
 
   resources :items
   resources :photos

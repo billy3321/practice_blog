@@ -5,7 +5,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.page params[:page]
+    #@articles = Article.all.page params[:page]
+    @q = Article.search(params[:q])
+    @articles = @q.result.includes(:user).page params[:page]
   end
 
   # GET /articles/1
