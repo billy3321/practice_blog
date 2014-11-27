@@ -26,6 +26,7 @@ gem 'jquery-ui-rails'
 gem 'chosen-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'ransack'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
