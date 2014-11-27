@@ -8,5 +8,8 @@
   = f.label :content_cont
   = f.search_field :content_cont
 
+  = f.label :comment_count_eq
+  = number_field_tag :comment_count_eq, params[:comment_count_eq]
+
   = f.submit "search"
 
