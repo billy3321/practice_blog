@@ -13,6 +13,12 @@ class Article < ActiveRecord::Base
   scope :search_content, lambda { |query| where("content like ?", "%#{query}%") }
   scope :in_week, lambda { where("created_at >= ?", Time.now - 1.week) }
 
+  scope :having_comment_count_of, ->(count) {
+    joins(:comments).
+    group('articles.id').
+    having('count(comments.id) = ?', count)
+  }
+
   def self.recent(t=(Time.now - 7.days))
     where(["created_at > ? ", t ])
   end
@@ -31,4 +37,6 @@ class Article < ActiveRecord::Base
     index = 'index_' + id.to_s
     $redis.get(index)
   end
+
+
 end

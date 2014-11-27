@@ -108,6 +108,8 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -129,6 +131,12 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
+    ransack (1.5.1)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.1)
     rdoc (4.1.2)
       json (~> 1.4)
     redis (3.1.0)
@@ -230,6 +238,7 @@ DEPENDENCIES
   minitest
   mysql2
   rails (= 4.1.6)
+  ransack
   redis
   rspec-rails (= 2.13.1)
   sass-rails (~> 4.0.3)
