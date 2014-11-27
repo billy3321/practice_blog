@@ -6,9 +6,8 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @q = Article.search(params[:q])
-    comment_count = nil
     comment_count = params.fetch(:comment_count_eq, nil)
-    if comment_count
+    unless comment_count.blank?
       puts 'has_comment_count'
       @articles = Article.having_comment_count_of(comment_count).
                         search(params[:q]).result.includes(:user).page(params[:page])
